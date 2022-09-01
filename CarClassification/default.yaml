@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: default
+spec:
+  template:
+    spec:
+      containers:
+      - name: mp12premium
+        image: diomou4/mp12_docker:mp12Tag
+        resources:
+          limits:
+            cpu: "0.9"
+          requests:
+            cpu: "0.9"
+        env:
+        - name: DATASET
+          value: "mnist"
+        - name: TYPE
+          value: "ff"
+      restartPolicy: Never
+  backoffLimit: 2

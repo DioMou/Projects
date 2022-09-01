@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: mp12-
+spec:
+  template:
+    spec:
+      containers:
+      - name: mp12classification
+        image: diomou4/mp12_docker:mp12Tag
+        command: ["python", "/mp12/classify.py"]
+      restartPolicy: Never
+  backoffLimit: 2

@@ -1,0 +1,9 @@
+Error: Amazon S3 Access Denied
+https://docs.aws.amazon.com/glue/latest/dg/glue-troubleshooting-errors.html#error-s3-access-denied
+https://docs.aws.amazon.com/glue/latest/dg/create-an-iam-role.html
+And change job detail in job! the IAM role created!
+
+
+Tablaue:
+built symbol map:https://www.pluralsight.com/guides/tableau-essentials:-build-symbol-maps
+build bar graph:https://help.tableau.com/current/pro/desktop/en-us/buildexamples_bar.htm

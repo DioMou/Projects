@@ -1,0 +1,57 @@
+https://gist.github.com/marclamberti/f45f872dea4dfd3eaa015a4a1af4b39b
+https://security.google.com/settings/security/apppasswords
+rhssasknpyryvlhe
+https://api.slack.com/apps
+
+docker exec -it 74b24b7bdb0b /bin/bash
+airflow tasks test DAG_ID TASK_ID PAST_DATE
+airflow tasks test forex_data_pipeline is_forex_rates_available 2021-01-01
+airflow tasks test forex_data_pipeline is_forex_currencies_file_available 2021-01-01
+airflow tasks test forex_data_pipeline downloading_rates 2021-01-01
+airflow tasks test forex_data_pipeline saving_rates 2021-01-01
+airflow tasks test forex_data_pipeline creating_forex_rates_table 2021-01-01
+airflow tasks test forex_data_pipeline forex_processing 2021-01-01
+airflow tasks test forex_data_pipeline send_email_notification 2021-01-01
+airflow tasks test forex_data_pipeline send_slack_notification 2021-01-01
+
+docker-compose restart airflow
+
+airflow(localhost:8080): admin admin
+hue(localhost:32762): root root
+
+is_forex_rates_available:
+conn_id:firex_api
+conn type:HTTP 
+Host:https://gist.github.com/
+
+is_forex_currencies_file_available:
+conn_id:forex_path
+conn type: File(path)
+Extra:{"path":"/opt/airflow/dags/files"}
+
+downloading_rates:Nothing to do
+
+saving_rates:Nothing to do
+
+creating_forex_rates_table:
+conn_id:hive_conn
+conn type:Hive Server 2 Thrift
+Host:hive-server 
+Login:hive
+password:hive
+port:10000
+
+forex_processing:
+Conn Type:Spark
+conn_id:spark_conn
+Host:spark://spark-master
+Port:7077
+
+send_email_notification:
+need to enable 2digit authenticaiton
+
+send_slack_notification:
+conn_id:slack_conn
+conn type: HTTP
+Host:https://hooks.slack.com/services
+password:/T03TW9FAHQ9/B03THJ6T2BV/kFK2aRxgum25UuH4sr4PK7oK
